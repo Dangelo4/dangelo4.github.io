@@ -1,0 +1,223 @@
+@charset "utf-8";
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans&family=Orbitron:wght@600&display=swap');
+
+/* Alteração do Box Model para border-box 
+Referência: http://sergiolopes.org/css-box-sizing-border-box/  */
+*, *::before, *::after {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+html {
+    /* Rolagem vertical com animação/velocidade */
+    scroll-behavior: smooth;
+    font-size: 18px;
+}
+
+body {
+    background-image: url(../site-omega/parte-1/imagens/textura-fundo.png);
+    background-attachment: fixed;
+    font-family: 'Open Sans', Verdana, sans-serif;
+
+}
+
+/* Todas as imagems em modo responsivo */
+img { max-width: 100%; }
+
+/* CSS reset para alguns elementos */
+body, h1, h2, h3, p, figure {
+    margin: 0;
+    padding: 0;
+}
+
+h1, nav, h2, h3, button {
+    font-family: Orbitron, Verdana, sans-serif;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+header, footer {
+    background-color: rgba(53, 116, 233, 0.425);
+    text-align: center;
+}
+
+header {
+    border-bottom: solid 2px;
+    margin-bottom: 10px;
+}
+
+footer { border-top: solid 2px; }
+
+article {
+    background-color: white;
+    padding: 2%;
+    box-shadow: black 1px 1px 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+main {
+    width: 95%;
+    margin: auto;
+}
+
+h2, h3, p { padding: 1% 0; }
+
+footer img { width: 30px; }
+
+/* Daqui pra frente, é a parte 3 (09/04) */
+footer h2 { font-size: 1rem; }
+
+footer p { font-size: 0.6rem; }
+
+section, figure { margin: 2% 0; }
+
+figcaption {
+    text-align: center;
+    font-weight: bold;
+}
+
+#voltar {
+    position: fixed;
+    bottom: 5px;
+    right: 5px;
+}
+
+#voltar a {
+    background-color: black;
+    color: white;
+    padding: 5px;
+    border-radius: 5px;
+}
+
+#voltar a:hover, #voltar a:focus {
+    background-color:lightblue;
+    color: black;
+}
+
+
+/* REGRA PROVISÓRIA
+(usada apenas para facilitar a visualização
+de cada área que será modificada) */
+/* h1 { background-color: red; }
+h1 a { background-color: green; }
+nav { background-color: yellow; }
+nav a { background-color: lightblue; } */
+
+/* Habilitar o modo flex para todos os
+elementos indicados */
+h1, h1 a, nav, nav a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+nav a {
+    font-size: 1rem;
+    font-weight: bold;
+    height: 50px;
+    width: 100%;
+}
+
+h1 {
+    padding: 5px 0;
+    font-size: 2.2rem;
+}
+
+h1 img { width: 50px; }
+
+nav a:hover, nav a:focus {
+    background-color: black;
+    color: white;
+}
+
+input, textarea {
+    border: solid 2px;
+    font-size: 1.1rem;
+    width: 100%;
+    padding: 1.5%;
+}
+
+label { font-weight: bold; }
+
+button {
+    padding: 10px;
+    border: none;
+    font-weight: bold;
+    background-color: black;
+    color: white;
+}
+
+button:hover, button:focus { 
+    background-color: darkblue;
+    cursor: pointer;
+}
+
+/* Media Queries:
+Regras que só serão aplicadas quando
+o site for visualizado em determinados tamanhos
+de tela */
+
+/* 1º Breakpoint:
+Telas com largura à partir de 700px */
+@media screen and (min-width: 700px){
+    header div {
+        display: flex;
+        justify-content: space-between;
+        /* box-shadow: red 0 0 20px inset; */
+        width: 95%; /* a mesma do main (conteudo) */
+        margin: auto; /* pra centralizar */
+    }
+
+    /* Habilitando flex para a div com a class grupo */
+    .grupo {
+        display: flex;
+        justify-content: space-between;
+
+        /* criar uma quebra entre as seções
+        (obs.: isso depende de uma largura
+        aplicada às seções */
+        flex-wrap: wrap; 
+    }
+
+    .grupo section, .grupo figure { width: 49%; }
+}
+
+/* 2º breakpoint:
+Telas com largura à partir de 850px */
+@media screen and (min-width: 850px) {
+    html { font-size: 20px; }
+}
+
+/* 3º breakpoint:
+Telas com largura à partir de 1000px */
+@media screen and (min-width: 1000px) {
+    html { font-size: 22px; }
+    h1 img { width: auto; }
+    header {
+        position: fixed;
+        width: 100%;
+        top: 0;
+    }
+    
+    /* Como fixamos o header na regra anterior, 
+    é necessário agora compensar a distância do restante
+    do conteúdo (os articles e também incluindo o topo do site) usando um espaçamento superior (padding-top) */
+    #topo, #o-que-fazemos, #nossas-equipes, #contato {
+        padding-top: 75px;
+    }
+
+    #voltar { display: none; }
+
+    /* Limitar o tamanho do header div
+    e do conteúdo (main), evitando que aumente
+    infinitamente. */
+    header div, main {
+        max-width: 1000px;
+    }
+}
